@@ -23,22 +23,19 @@ Using the terminal, navigate to the directory where you want to create the proje
 ```bash
 python3 -m venv basic_crewai
 ```
-Next, activate the virtual environment by running the following command:
+# Next, activate the virtual environment by running the following command:
 ```bash
 source basic_crewai/bin/activate
 ```
 # Clone the CrewAI Basic Example repository into the project directory
 ```bash
-git clone
+cd basic_crewai
+git clone https://github.com/theCyberTech/crewai_basic_example.git
 ```
 # Install the required dependencies
 ```bash
 cd crewai
 pip install -r requirements.txt
-```
-# Update your .env file with your OpenAI API key
-```bash
-OPENAI_API_KEY=your-api-key
 ```
 # Update the main.py file with your topic
 ```python
