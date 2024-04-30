@@ -34,7 +34,7 @@ git clone https://github.com/theCyberTech/crewai_basic_example.git
 ```
 # Install the required dependencies
 ```bash
-cd crewai
+cd  crewai_basic_example
 pip install -r requirements.txt
 ```
 # Update the main.py file with your topic
