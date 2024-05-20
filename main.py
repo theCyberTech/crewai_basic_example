@@ -1,4 +1,4 @@
-'''
+"""
 Name
     main.py
 
@@ -17,11 +17,11 @@ Usage
     python main.py
     
 Output
-    The output of the task is written to a file called "research_result.txt".'''
+    The output of the task is written to a file called "research_result.txt"."""
 
 # Import required libraries - make sure the crewai and langchain_community packages are installed via pip
 import os
-from crewai import Agent, Crew, Process, TAsk
+from crewai import Agent, Crew, Process, Task
 
 os.environ['OPENAI_API_BASE']='http://localhost:11434/v1'
 os.environ['OPENAI_API_KEY']='sk-111111111111111111111111111111111111111111111111'
