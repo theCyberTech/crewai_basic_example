@@ -21,9 +21,7 @@ Output
 
 # Import required libraries - make sure the crewai and langchain_community packages are installed via pip
 import os
-from crewai import Agent
-from crewai import Task
-from crewai import Crew, Process
+from crewai import Agent, Crew, Process, TAsk
 
 os.environ['OPENAI_API_BASE']='http://localhost:11434/v1'
 os.environ['OPENAI_API_KEY']='sk-111111111111111111111111111111111111111111111111'
@@ -45,7 +43,6 @@ researcher = Agent(
     verbose=True, # This is a flag that determines if the agent will print more output to the console 
     step_callback=write_result_to_file, # This is a callback function that will be called after each iteration of the agent
     Allow_Delegation=False, # This is a flag that determines if the agent can delegate the task to another agent. As we are only using one agent, we set this to False
-    cache=False, # Indicates if the agent should use a cache for tool usage. A tool is not used in this example, so we set this to False
 )  
 
 # Create the task
