@@ -42,7 +42,7 @@ researcher = Agent(
     max_rpm=100, # This is the maximum number of requests per minute that the agent can make to the language model
     verbose=True, # This is a flag that determines if the agent will print more output to the console 
     step_callback=write_result_to_file, # This is a callback function that will be called after each iteration of the agent
-    Allow_Delegation=False, # This is a flag that determines if the agent can delegate the task to another agent. As we are only using one agent, we set this to False
+    allow_delegation=False, # This is a flag that determines if the agent can delegate the task to another agent. As we are only using one agent, we set this to False
 )  
 
 # Create the task
