@@ -1,0 +1,51 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - octocat
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report!
+        
+        **Important:** Please fill out all fields below. While the form may allow submission with empty fields, reports with missing information may be closed without investigation. Your thorough input helps us address issues effectively.
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details (Required)
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened? (Required)
+      description: Please provide a clear and concise description of the bug. Include what you were doing, what you expected to happen, and what actually happened.
+      placeholder: I was doing [A], expected [B] to happen, but [C] occurred instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version (Required)
+      description: What version of our software are you running?
+      options:
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com/coc)
+      options:
+        - label: I agree to follow this project's Code of Conduct (Required)
+          required: true
+  - type: markdown
+    attributes:
+      value: |
+        **Final Note:** Submitting this form with any empty fields may result in your issue being closed without investigation. Please ensure all required information is provided. Thank you for your cooperation!
