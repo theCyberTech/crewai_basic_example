@@ -11,7 +11,6 @@ body:
       description: Provide a clear and concise description of what the bug is.
     validations:
       required: true
-
   - type: textarea
     id: steps-to-reproduce
     attributes:
@@ -24,7 +23,6 @@ body:
         4. See error
     validations:
       required: true
-
   - type: textarea
     id: expected-behavior
     attributes:
@@ -32,7 +30,6 @@ body:
       description: A clear and concise description of what you expected to happen.
     validations:
       required: true
-
   - type: textarea
     id: screenshots-code
     attributes:
@@ -40,23 +37,35 @@ body:
       description: If applicable, add screenshots or code snippets to help explain your problem.
     validations:
       required: true
-
-  - type: input
+  - type: dropdown
     id: os
     attributes:
       label: Operating System
-      description: e.g., Ubuntu 20.04, macOS Catalina, Windows 10
+      description: Select the operating system you're using
+      options:
+        - Ubuntu 20.04
+        - Ubuntu 22.04
+        - macOS Catalina
+        - macOS Big Sur
+        - macOS Monterey
+        - macOS Sequoia
+        - Windows 10
+        - Windows 11
+        - Other (specify in additional context)
     validations:
       required: true
-
-  - type: input
+  - type: dropdown
     id: python-version
     attributes:
       label: Python Version
-      description: e.g., 3.8, 3.9, 3.10
+      description: Version of Python your Crew is running on
+      options:
+        - 3.10
+        - 3.11
+        - 3.12
+        - 3.13
     validations:
       required: true
-
   - type: input
     id: crewai-version
     attributes:
@@ -64,23 +73,20 @@ body:
       description: e.g., 0.30.11
     validations:
       required: true
-
   - type: input
     id: crewai-tools-version
     attributes:
       label: crewAI Tools Version
-      description: e.g., 0.2.6
+      description: What version of CrewAI are you using 
     validations:
       required: true
-
   - type: textarea
-    id: logs
+    id: Evidence
     attributes:
-      label: Logs
-      description: Include relevant logs or error messages if applicable.
+      label: Evidence
+      description: Include relevant Information, logs or error messages. These can be screenshots.
     validations:
       required: true
-
   - type: textarea
     id: possible-solution
     attributes:
@@ -88,7 +94,6 @@ body:
       description: Have a solution in mind? Please suggest it here, or write "None".
     validations:
       required: true
-
   - type: textarea
     id: additional-context
     attributes:
