@@ -70,14 +70,24 @@ body:
     id: crewai-version
     attributes:
       label: crewAI Version
-      description: e.g., 0.30.11
+      description: What version of CrewAI are you using
     validations:
       required: true
   - type: input
     id: crewai-tools-version
     attributes:
       label: crewAI Tools Version
-      description: What version of CrewAI are you using 
+      description: What version of CrewAI Tools are you using 
+    validations:
+      required: true
+  - type: dropdown
+    id: virtual-environment
+    attributes:
+      label: Virtual Environemnt
+      description: What Virtual Environemnt are you running your crew in.
+      - Venv
+      - Conda
+      - Poetry
     validations:
       required: true
   - type: textarea
