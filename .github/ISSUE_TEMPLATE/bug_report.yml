@@ -48,7 +48,8 @@ body:
         - macOS Catalina
         - macOS Big Sur
         - macOS Monterey
-        - macOS Sequoia
+        - macOS Ventura
+        - macOS Sonoma
         - Windows 10
         - Windows 11
         - Other (specify in additional context)
@@ -83,18 +84,19 @@ body:
   - type: dropdown
     id: virtual-environment
     attributes:
-      label: Virtual Environemnt
-      description: What Virtual Environemnt are you running your crew in.
-      - Venv
-      - Conda
-      - Poetry
+      label: Virtual Environment
+      description: What Virtual Environment are you running your crew in.
+      options:
+        - Venv
+        - Conda
+        - Poetry
     validations:
       required: true
   - type: textarea
-    id: Evidence
+    id: evidence
     attributes:
       label: Evidence
-      description: Include relevant Information, logs or error messages. These can be screenshots.
+      description: Include relevant information, logs or error messages. These can be screenshots.
     validations:
       required: true
   - type: textarea
