@@ -24,7 +24,8 @@ uv tool install crewai
 ollama pull llama3.2
 ```
 
-Make sure Ollama is running before starting the crew.
+Make sure Ollama is running at its default `http://localhost:11434` address
+before starting the crew.
 
 ## Install and run
 
@@ -32,14 +33,6 @@ Clone the repository, enter its directory, and install the locked dependencies:
 
 ```bash
 crewai install
-```
-
-The example connects to Ollama through its OpenAI-compatible API. Set these
-environment variables in your shell:
-
-```bash
-export OPENAI_BASE_URL=http://localhost:11434/v1
-export OPENAI_API_KEY=ollama
 ```
 
 Run the crew:
@@ -56,5 +49,4 @@ Edit the default `topic` under `inputs` in `crew.jsonc`. You can instead remove
 that default; `crewai run` will then prompt for the missing value.
 
 To use another Ollama model, pull it and update the `llm` value in
-`agents/researcher.jsonc`. Keep the `openai/` prefix when using Ollama's
-OpenAI-compatible endpoint.
+`agents/researcher.jsonc`. Keep the `ollama/` provider prefix.

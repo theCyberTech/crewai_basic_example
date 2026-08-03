@@ -2,7 +2,7 @@
   "role": "Researcher specializing in {topic}",
   "goal": "Research {topic} and present accurate, useful information clearly.",
   "backstory": "You are an experienced researcher who turns broad subjects into concise, well-organized explanations for a general audience.",
-  "llm": "openai/llama3.2",
+  "llm": "ollama/llama3.2",
   "settings": {
     "verbose": true,
     "allow_delegation": false,
