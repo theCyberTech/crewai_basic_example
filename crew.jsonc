@@ -1,0 +1,19 @@
+{
+  "name": "Rock Music Research Crew",
+  "agents": ["researcher"],
+  "tasks": [
+    {
+      "name": "research_task",
+      "description": "Research {topic}. Cover important bands and artists, defining musical characteristics, notable albums and songs, cultural context, and lasting influence. Distinguish well-supported facts from opinion.",
+      "expected_output": "A five-paragraph markdown report about {topic}. Include a concise introduction, specific examples, and a concluding paragraph about the genre's legacy. Do not wrap the entire report in a code fence.",
+      "agent": "researcher",
+      "output_file": "output/research_result.md",
+      "markdown": true
+    }
+  ],
+  "process": "sequential",
+  "verbose": true,
+  "inputs": {
+    "topic": "70s, 80s, and 90s Australian rock bands"
+  }
+}

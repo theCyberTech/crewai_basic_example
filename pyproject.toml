@@ -1,0 +1,11 @@
+[project]
+name = "crewai-basic-example"
+version = "0.1.0"
+description = "A basic JSON-first CrewAI research crew"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai>=1.15.10,<2",
+]
+
+[tool.crewai]
+type = "crew"

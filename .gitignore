@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+output/*
+!output/.gitkeep
+uv.lock

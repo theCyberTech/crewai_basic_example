@@ -1,48 +1,60 @@
-# Welcome to the Basic Crew AI Example
-Thsi example demonstrates how to use CrewAI to build one agent and one task. This is to help those who have 0 cdoing experience to try and make the transition to some of the basics around setting up your virtual env, using git etc and running a very basic CrewAI example. I will say that until a GUI is released, you will need to be comfortable with the command line and have some basic understadning of Python. I suggest that you have a look at Python tutorials on YouTube or other platforms to get a basic understanding of Python.
+# Basic CrewAI example
 
-# Prerequisites
-    Install Python 3.10 or later. You can download Python from the official website: https://www.python.org/downloads/
-    Install Git. You can install via:
-        Linux: apt-get install git
-        Windows: https://git-scm.com/download/win
-        Mac: brew install git
-    Install a code editor. You can use any code editor of your choice. Some popular code editors are:
-        Visual Studio Code: https://code.visualstudio.com/
-        Sublime Text: https://www.sublimetext.com/
-        PyCharm: https://www.jetbrains.com/pycharm/
-    Install Ollama 
-        Download the latest version of Ollama from the official website: https://www.ollama.com/
-    Start Ollama
-        click the new Ollama icon on your desktop to start the application or the Ollama icon in your applications folder.
-    Pull the LLM model the LLM model using the CLI
-        ollama pull mistral:7b-instruct-q4_0
-       
-# Setup environment with virtualenv
-Using the terminal, navigate to the directory where you want to create the project. Then, run the following command to create a new project:
+This example uses CrewAI's current JSON-first project format. It defines one
+research agent in `agents/researcher.jsonc` and one task in `crew.jsonc`. The
+task writes a markdown report to `output/research_result.md`.
+
+## Prerequisites
+
+- Python 3.10 through 3.13
+- [uv](https://docs.astral.sh/uv/)
+- [Ollama](https://ollama.com/)
+
+Install Ollama, start it, and download the model used by the example:
+
 ```bash
-python3 -m venv basic_crewai
+ollama pull mistral:7b-instruct-q4_0
 ```
-# Next, activate the virtual environment by running the following command:
+
+## Install
+
+Install the CrewAI CLI and project dependencies:
+
 ```bash
-source basic_crewai/bin/activate
+uv tool install crewai
+crewai install
 ```
-# Clone the CrewAI Basic Example repository into the project directory
+
+If `crewai` is not on your `PATH`, run `uv tool update-shell` and restart your
+terminal.
+
+## Run
+
+Run the crew from the repository root:
+
 ```bash
-cd basic_crewai
-git clone https://github.com/theCyberTech/crewai_basic_example.git
+crewai run
 ```
-# Install the required dependencies
-```bash
-cd  crewai_basic_example
-pip install -r requirements.txt
+
+The default topic is configured in `crew.jsonc` under `inputs`. To use a
+different topic, edit that value before running the crew. The completed report
+is written to `output/research_result.md`.
+
+## Project structure
+
+```text
+.
+├── agents/
+│   └── researcher.jsonc
+├── crew.jsonc
+├── pyproject.toml
+└── output/
 ```
-# Update the main.py file with your topic
-```python
-### result = crew.kickoff(inputs={'topic': '70s and 80s Australan rock bands'})
-```
-# Run the agent
-```bash
-python main.py
-```
+
+Sensitive environment files should not be committed. If your setup needs
+environment variables, copy `.env.example` to `.env` and edit the values.
+
+See the [CrewAI installation guide](https://docs.crewai.com/en/installation)
+and [first crew guide](https://docs.crewai.com/en/guides/crews/first-crew) for
+the current project format and CLI commands.
 
