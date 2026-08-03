@@ -12,6 +12,15 @@ task writes a markdown report to `output/research_result.md`.
 
 ## Install
 
+Install `uv` if it is not already available:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Restart your terminal or follow the installer instructions to make `uv`
+available on your `PATH`.
+
 Install the CrewAI CLI and project dependencies:
 
 ```bash

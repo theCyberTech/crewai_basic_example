@@ -13,7 +13,19 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate JSON configuration
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.1"
+      - name: Install CrewAI
         run: |
-          python -m json.tool crew.jsonc >/dev/null
-          python -m json.tool agents/researcher.jsonc >/dev/null
+          uv tool install crewai
+          crewai install
+      - name: Validate CrewAI configuration
+        run: |
+          uv run python - <<'PY'
+          from crewai.project.json_loader import validate_crew_project
+
+          validate_crew_project("crew.jsonc")
+          print("CrewAI project validation passed")
+          PY
