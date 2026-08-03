@@ -1,23 +1,45 @@
-name: Pylint
+name: Validate CrewAI project
 
-on: [push]
+on:
+  push:
+  pull_request:
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.10", "3.13"]
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-    - name: Analysing the code with pylint
-      run: |
-        pylint $(git ls-files '*.py')
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+      - name: Install locked dependencies
+        run: uv sync --locked
+      - name: Validate declarative crew configuration
+        run: |
+          uv run python - <<'PY'
+          from pathlib import Path
+          import json5
+
+          crew = json5.loads(Path("crew.jsonc").read_text())
+          agents = set(crew["agents"])
+          assert agents
+          assert crew["tasks"]
+
+          for name in agents:
+              config = Path("agents", f"{name}.jsonc")
+              assert config.is_file(), f"Missing agent configuration: {config}"
+              agent = json5.loads(config.read_text())
+              for field in ("role", "goal", "backstory", "llm"):
+                  assert agent.get(field), f"{config}: missing {field}"
+
+          for task in crew["tasks"]:
+              assert task["agent"] in agents, (
+                  f'{task["name"]}: unknown agent {task["agent"]}'
+              )
+              assert task.get("description")
+              assert task.get("expected_output")
+          PY

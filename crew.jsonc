@@ -1,0 +1,20 @@
+{
+  "name": "Basic Research Crew",
+  "agents": ["researcher"],
+  "tasks": [
+    {
+      "name": "research_task",
+      "description": "Research {topic}. Select the most relevant facts, explain their significance, and avoid unsupported claims.",
+      "expected_output": "Exactly five informative paragraphs about {topic}.",
+      "agent": "researcher",
+      "output_file": "output/research_result.txt"
+    }
+  ],
+  "process": "sequential",
+  "verbose": true,
+  "memory": false,
+  "cache": false,
+  "inputs": {
+    "topic": "70s, 80s and 90s Australian rock bands"
+  }
+}
