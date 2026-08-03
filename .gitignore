@@ -4,4 +4,3 @@ __pycache__/
 *.py[cod]
 output/*
 !output/.gitkeep
-uv.lock
