@@ -8,13 +8,7 @@ task writes a markdown report to `output/research_result.md`.
 
 - Python 3.10 through 3.13
 - [uv](https://docs.astral.sh/uv/)
-- [Ollama](https://ollama.com/)
-
-Install Ollama, start it, and download the model used by the example:
-
-```bash
-ollama pull mistral:7b-instruct-q4_0
-```
+- An OpenAI API key with access to `gpt-5.6-luna`
 
 ## Install
 
@@ -28,6 +22,12 @@ crewai install
 If `crewai` is not on your `PATH`, run `uv tool update-shell` and restart your
 terminal.
 
+Copy the environment template and set your OpenAI API key:
+
+```bash
+cp .env.example .env
+```
+
 ## Run
 
 Run the crew from the repository root:
@@ -39,6 +39,9 @@ crewai run
 The default topic is configured in `crew.jsonc` under `inputs`. To use a
 different topic, edit that value before running the crew. The completed report
 is written to `output/research_result.md`.
+
+The researcher uses the OpenAI model `gpt-5.6-luna`, configured in
+`agents/researcher.jsonc`.
 
 ## Project structure
 

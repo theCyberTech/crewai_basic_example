@@ -2,12 +2,7 @@
   "role": "Researcher specializing in {topic}",
   "goal": "Research {topic} and organize accurate, useful findings into a clear report.",
   "backstory": "You are an experienced music researcher who separates important facts from speculation and explains them clearly.",
-  "llm": {
-    "model": "mistral:7b-instruct-q4_0",
-    "custom_openai": true,
-    "base_url": "http://localhost:11434/v1",
-    "api_key": "ollama"
-  },
+  "llm": "openai/gpt-5.6-luna",
   "settings": {
     "verbose": true,
     "allow_delegation": false,
