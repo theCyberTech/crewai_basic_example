@@ -4,6 +4,9 @@ This example uses CrewAI's current JSON-first project format. It defines one
 research agent in `agents/researcher.jsonc` and one task in `crew.jsonc`. The
 task writes a markdown report to `output/research_result.md`.
 
+`pyproject.toml` declares `[tool.crewai] type = "crew"` and
+`definition = "crew.jsonc"` so `crewai run` loads the JSON crew directly.
+
 ## Prerequisites
 
 - Python 3.10 through 3.13
@@ -59,6 +62,9 @@ The researcher uses the OpenAI model `gpt-5.6-luna`, configured in
 ├── agents/
 │   └── researcher.jsonc
 ├── crew.jsonc
+├── knowledge/
+├── skills/
+├── tools/
 ├── pyproject.toml
 └── output/
 ```
@@ -69,4 +75,3 @@ environment variables, copy `.env.example` to `.env` and edit the values.
 See the [CrewAI installation guide](https://docs.crewai.com/en/installation)
 and [first crew guide](https://docs.crewai.com/en/guides/crews/first-crew) for
 the current project format and CLI commands.
-

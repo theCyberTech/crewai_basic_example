@@ -25,16 +25,8 @@ below are only the non-obvious gotchas discovered during setup.
   injected `OPENAI_API_KEY` env var. Either have no `.env` (the injected env var is used directly)
   or put the real key in `.env`.
 
-- Gotcha: `crewai run` does not currently run this JSON crew. `pyproject.toml` has
-  `[tool.crewai] type = "crew"` but no `definition` key, so `crewai run` falls back to the classic
-  `uv run run_crew` entrypoint (which doesn't exist here) and errors with
-  `Failed to spawn: run_crew`. To actually execute the crew, run it in-process against
-  `crew.jsonc`, e.g.:
-
-  ```bash
-  uv run python -c "from crewai.project.crew_loader import load_crew; \
-c, inputs = load_crew('crew.jsonc'); c.kickoff(inputs=inputs)"
-  ```
-
-  (This is the same code path `crewai run` uses internally for JSON crews.) The report is written
-  to `output/research_result.md`. Set `CREWAI_DMN_MODE=1` for plain, non-TUI terminal output.
+- `crewai run` loads this JSON crew because `pyproject.toml` sets
+  `[tool.crewai] type = "crew"` and `definition = "crew.jsonc"`. Without `definition`, the CLI
+  falls back to the classic `uv run run_crew` entrypoint (which does not exist here). Set
+  `CREWAI_DMN_MODE=1` for plain, non-TUI terminal output. The report is written to
+  `output/research_result.md`.

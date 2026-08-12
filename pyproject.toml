@@ -4,8 +4,16 @@ version = "0.1.0"
 description = "A basic JSON-first CrewAI research crew"
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "crewai>=1.15.10,<2",
+    "crewai>=1.15.15,<2",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["agents", "crew.jsonc", "tools", "knowledge", "skills"]
 
 [tool.crewai]
 type = "crew"
+definition = "crew.jsonc"
