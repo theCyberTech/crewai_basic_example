@@ -1,9 +1,15 @@
 {
+  // Display name for this crew
   "name": "Rock Music Research Crew",
+
+  // Agents to include — each must have a matching agents/<name>.jsonc file
   "agents": ["researcher"],
+
+  // Task definitions — executed in order for sequential process
   "tasks": [
     {
       "name": "research_task",
+      // Use {placeholder} inputs here; crewai run prompts for missing values
       "description": "Research {topic}. Cover important bands and artists, defining musical characteristics, notable albums and songs, cultural context, and lasting influence. Distinguish well-supported facts from opinion.",
       "expected_output": "A five-paragraph markdown report about {topic}. Include a concise introduction, specific examples, and a concluding paragraph about the genre's legacy. Do not wrap the entire report in a code fence.",
       "agent": "researcher",
@@ -11,8 +17,13 @@
       "markdown": true
     }
   ],
+
+  // "sequential" — tasks run in order, each receiving prior task outputs
   "process": "sequential",
   "verbose": true,
+
+  // Optional runtime input defaults. `crewai run` prompts for any placeholders
+  // missing from this object.
   "inputs": {
     "topic": "70s, 80s, and 90s Australian rock bands"
   }
