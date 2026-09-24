@@ -1,0 +1,4 @@
+{
+  "name": "CrewAI basic example",
+  "install": "bash .cursor/install.sh"
+}
