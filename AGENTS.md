@@ -28,5 +28,12 @@ below are only the non-obvious gotchas discovered during setup.
 - `crewai run` loads this JSON crew because `pyproject.toml` sets
   `[tool.crewai] type = "crew"` and `definition = "crew.jsonc"`. Without `definition`, the CLI
   falls back to the classic `uv run run_crew` entrypoint (which does not exist here). Set
-  `CREWAI_DMN_MODE=1` for plain, non-TUI terminal output. The report is written to
-  `output/research_result.md`.
+  `CREWAI_DMN=1` for plain, non-TUI terminal output (this is the env var read by
+  `crewai_cli.utils.is_dmn_mode_enabled` in crewai 1.15.x; the older `CREWAI_DMN_MODE` name has
+  no effect and leaves the CLI trying to launch its Textual TUI, which hangs in a non-TTY VM).
+  The report is written to `output/research_result.md`.
+
+- A Cloud Agent environment is defined in `.cursor/environment.json`, whose `install` step runs
+  `.cursor/install.sh` (installs `uv`, installs the `crewai` CLI, runs `uv sync`). It is
+  idempotent and works from the default base image, so it also covers a fresh VM with no
+  pre-seeded snapshot.
